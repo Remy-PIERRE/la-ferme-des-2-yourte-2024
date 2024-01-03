@@ -1,5 +1,4 @@
 import CarrouselSection from "./CarrouselSection.js";
-// TODO - prevent multi click - timer - interaction timer && click
 
 export default class Carrousel {
 	node;

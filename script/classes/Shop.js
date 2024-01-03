@@ -1,5 +1,4 @@
 import ShopArticle from "./ShopArticle.js";
-// TODO - true shop - limit fav shop size
 
 export default class Shop {
 	node;

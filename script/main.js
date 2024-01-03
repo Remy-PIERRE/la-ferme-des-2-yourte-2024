@@ -1,6 +1,12 @@
 import Carrousel from "./classes/Carrousel.js";
 import Shop from "./classes/Shop.js";
 
+// TODO (all) - checkpage before create classes
+// (apropos) - check title height and change position and margin of content
+// (index) - true shop - limit fav shop size
+// (index / shop) - hover on card with mobile
+// (index) - prevent multi click - timer - interaction timer && click -- click on button not only image
+
 function initApp() {
 	// handle menu mobile opening / closing //
 	document.querySelector("#mobileMenuIcon").addEventListener("click", () => {
