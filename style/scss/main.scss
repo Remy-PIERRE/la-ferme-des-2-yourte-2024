@@ -805,7 +805,7 @@ a {
 .article--wrapper {
 }
 
-.article--title {
+.article--title.apropos--title {
     width: 100%;
 }
 
@@ -843,7 +843,7 @@ a {
         margin-bottom: 160px;
     }
 
-    .article--title {
+    .article--title.apropos--title {
         width: calc((100% - 520px));
         position: absolute;
         top: 0;

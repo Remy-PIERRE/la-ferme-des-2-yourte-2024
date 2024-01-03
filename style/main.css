@@ -686,7 +686,7 @@ a {
     width: 575px;
   }
 }
-.article--title {
+.article--title.apropos--title {
   width: 100%;
 }
 
@@ -720,7 +720,7 @@ a {
     position: relative;
     margin-bottom: 160px;
   }
-  .article--title {
+  .article--title.apropos--title {
     width: calc(100% - 520px);
     position: absolute;
     top: 0;
