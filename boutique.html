@@ -8,6 +8,9 @@
 		<link rel="stylesheet" href="./style/main.css" />
 	</head>
 	<body>
+		<div id="page" data-page="boutique" class="hidden"></div>
+		<div class="body--menu--filter" id="bodyMenuFilter"></div>
+
 		<section class="banner--container container">
 			<div class="banner--wrapper wrapper">
 				<div class="banner--socials">
@@ -78,6 +81,98 @@
 					</nav>
 				</div>
 			</header>
+
+			<section class="page--title">
+				<h1>La boutique</h1>
+
+				<div class="page--title--images">
+					<img src="./public/images/winter.png" alt="icon" />
+					<img src="./public/images/spring.png" alt="icon" />
+					<img src="./public/images/summer.png" alt="icon" />
+					<img src="./public/images/automn.png" alt="icon" />
+				</div>
+			</section>
+
+			<section class="gallery--container container">
+				<div class="gallery--wrapper wrapper">
+					<section class="gallery--menu" id="galleryFilterMenu">
+						<p>lorem</p>
+						<p>lorem</p>
+						<p>lorem</p>
+						<p>lorem</p>
+						<p>lorem</p>
+					</section>
+					<section class="gallery--content">
+						<div class="gallery--content--header">
+							<div class="gallery--filter" id="galleryFilterIcon">
+								<img src="./public/images/filtre.png" alt="icone" />
+							</div>
+
+							<p>résultats</p>
+						</div>
+
+						<div class="gallery--content--grid">
+							<template id="shopTemplate">
+								<a class="shop--template--wrapper">
+									<div class="shop--image">
+										<img src="" alt="" />
+									</div>
+									<div class="shop--content">
+										<h2></h2>
+										<h3></h3>
+									</div>
+								</a>
+							</template>
+
+							<a class="shop--template--wrapper">
+								<div class="shop--image">
+									<img src="./public/images/automn.png" alt="" />
+								</div>
+								<div class="shop--content">
+									<h2>titre</h2>
+									<h3>description</h3>
+								</div>
+							</a>
+							<a class="shop--template--wrapper">
+								<div class="shop--image">
+									<img src="./public/images/automn.png" alt="" />
+								</div>
+								<div class="shop--content">
+									<h2>titre</h2>
+									<h3>description</h3>
+								</div>
+							</a>
+							<a class="shop--template--wrapper">
+								<div class="shop--image">
+									<img src="./public/images/automn.png" alt="" />
+								</div>
+								<div class="shop--content">
+									<h2>titre</h2>
+									<h3>description</h3>
+								</div>
+							</a>
+							<a class="shop--template--wrapper">
+								<div class="shop--image">
+									<img src="./public/images/automn.png" alt="" />
+								</div>
+								<div class="shop--content">
+									<h2>titre</h2>
+									<h3>description</h3>
+								</div>
+							</a>
+							<a class="shop--template--wrapper">
+								<div class="shop--image">
+									<img src="./public/images/automn.png" alt="" />
+								</div>
+								<div class="shop--content">
+									<h2>titre</h2>
+									<h3>description</h3>
+								</div>
+							</a>
+						</div>
+					</section>
+				</div>
+			</section>
 		</main>
 
 		<footer class="footer--container container">

@@ -8,9 +8,27 @@ import Shop from "./classes/Shop.js";
 // (index) - prevent multi click - timer - interaction timer && click -- click on button not only image
 
 function initApp() {
+	// all pages //
+	handleMenuMobile();
+
+	const page = document.querySelector("#page").dataset.page;
+
+	if (page === "accueil") {
+		handleCarrousel();
+		handleGallery();
+	}
+
+	if (page === "boutique") {
+		handleMenuFilters();
+		handleGallery();
+	}
+}
+
+function handleMenuMobile() {
 	// handle menu mobile opening / closing //
 	document.querySelector("#mobileMenuIcon").addEventListener("click", () => {
 		document.querySelector("#mobileMenuContainer").classList.toggle("opened");
+		handleBodyMenuFilter();
 	});
 
 	// handle header sticky transform //
@@ -32,10 +50,63 @@ function initApp() {
 			logo.src = "./public/images/ferme_logo.png";
 		}
 	});
+}
 
-	// create carrousel, class handling all //
+function handleMenuFilters() {
+	const filterIcon = document.querySelector("#galleryFilterIcon");
+	const logo = document.querySelector("#headerLogo");
+	let inAnimation = false;
+
+	// handle icon and header merging animation //
+	window.addEventListener("scroll", () => {
+		if (window.scrollY > 230 && ![...filterIcon.classList].includes("merged")) {
+			filterIcon.classList.toggle("merged");
+			filterIcon.animate([{ top: "48px" }, { top: 0 }], {
+				duration: 400,
+				easeing: "ease-in-out",
+				fill: "forwards",
+			});
+			filterIcon.querySelector("img").src = "./public/images/filtre_white.png";
+			logo.style.opacity = 0;
+		}
+
+		if (window.scrollY < 220 && [...filterIcon.classList].includes("merged")) {
+			if (inAnimation) return;
+			inAnimation = true;
+
+			const animation = filterIcon.animate([{ top: 0 }, { top: "48px" }], {
+				duration: 400,
+				easeing: "ease-in-out",
+				fill: "forwards",
+			});
+
+			animation.addEventListener("finish", () => {
+				filterIcon.classList.toggle("merged");
+				filterIcon.querySelector("img").src = "./public/images/filtre.png";
+				inAnimation = false;
+			});
+			logo.style.opacity = 1;
+		}
+	});
+
+	// handle openingfilter menu //
+	filterIcon.addEventListener("click", () => {
+		document.querySelector("#galleryFilterMenu").classList.toggle("opened");
+		handleBodyMenuFilter();
+	});
+}
+
+function handleBodyMenuFilter() {
+	const filter = document.querySelector("#bodyMenuFilter");
+	const opacity = getComputedStyle(filter).opacity;
+	filter.style.opacity = +opacity === 0 ? 1 : 0;
+}
+
+function handleCarrousel() {
 	const carrousel = new Carrousel(carrouselData);
+}
 
+function handleGallery() {
 	const shop = new Shop(shopData);
 }
 

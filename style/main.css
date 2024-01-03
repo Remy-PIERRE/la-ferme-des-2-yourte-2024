@@ -15,6 +15,18 @@ body {
   max-width: 100%;
 }
 
+.body--menu--filter {
+  width: 100vw;
+  height: 100vh;
+  background: rgba(4, 47, 46, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
 .container {
   width: 100%;
 }
@@ -155,6 +167,7 @@ a {
 .header--logo {
   height: 60px;
   width: auto;
+  transition: opacity 0.4s;
 }
 
 .mobile--menu--icon {
@@ -747,6 +760,77 @@ a {
     margin: 0 0 -80px 40px;
   }
 }
+.gallery--menu {
+  height: 100vh;
+  width: 80%;
+  padding: 80px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #fff;
+  box-shadow: -4px 4px 4px rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  right: -100%;
+  z-index: 10;
+  transition: all 0.4s ease-in-out;
+}
+.gallery--menu.opened {
+  right: 0;
+}
+
+.gallery--content--header {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  border: 1px solid #333;
+}
+.gallery--content--header p {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.gallery--filter {
+  height: 50px;
+  width: 50px;
+  border: 1px outset rgb(4, 47, 46);
+  border-radius: 100px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  background: #fff;
+  position: sticky;
+  top: 48px;
+  left: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: top 0.4s, border 0.4s, background 0.4s;
+}
+.gallery--filter img {
+  height: 60%;
+  width: auto;
+}
+.gallery--filter.merged {
+  position: fixed;
+  top: 48px;
+  left: 20px;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  z-index: 15;
+}
+
+.gallery--content--grid {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  justify-items: center;
+  gap: 20px;
+}
+
 .footer--container {
   position: relative;
   background: #042F2E;
