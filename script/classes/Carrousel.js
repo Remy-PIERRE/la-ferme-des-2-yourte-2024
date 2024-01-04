@@ -5,6 +5,8 @@ export default class Carrousel {
 	sections = [];
 	sectionIndex;
 	animationDuration;
+	inAnimation = false;
+	timer;
 
 	constructor(datas) {
 		this.node = document.querySelector("#carrouselSections");
@@ -18,6 +20,7 @@ export default class Carrousel {
 		this.animationDuration = 500;
 
 		this.setSections();
+		this.handleTimer();
 		this.handleEvents();
 	}
 
@@ -61,6 +64,10 @@ export default class Carrousel {
 	}
 
 	goToNextSection() {
+		if (this.inAnimation) return;
+		this.inAnimation = true;
+		this.resetTimer();
+
 		const animation = this.node.animate(
 			[
 				{ left: "-100%" },
@@ -74,13 +81,19 @@ export default class Carrousel {
 		);
 
 		this.sectionIndex = this.getNextSectionIndex();
-		setTimeout(() => {
+		animation.addEventListener("finish", () => {
 			animation.cancel();
 			this.setSections();
-		}, this.animationDuration);
+			this.inAnimation = false;
+			this.handleTimer();
+		});
 	}
 
 	goToPrevSection() {
+		if (this.inAnimation) return;
+		this.inAnimation = true;
+		this.resetTimer();
+
 		const animation = this.node.animate(
 			[
 				{ left: "-100%" },
@@ -94,9 +107,24 @@ export default class Carrousel {
 		);
 
 		this.sectionIndex = this.getPrevSectionIndex();
-		setTimeout(() => {
+		animation.addEventListener("finish", () => {
 			animation.cancel();
 			this.setSections();
-		}, this.animationDuration);
+			this.inAnimation = false;
+			this.handleTimer();
+		});
+	}
+
+	handleTimer() {
+		this.timer = setTimeout(() => {
+			this.goToNextSection();
+		}, 7000);
+	}
+
+	resetTimer() {
+		if (this.timer) {
+			clearTimeout(this.timer);
+			this.timer = false;
+		}
 	}
 }

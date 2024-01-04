@@ -22,7 +22,7 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 4;
+  z-index: -1;
   opacity: 0;
   transition: opacity 0.4s;
 }
@@ -452,11 +452,11 @@ a {
   width: auto;
   position: relative;
 }
-.carrousel--buttons img#carrouselPrev {
+.carrousel--buttons #carrouselPrev img {
   transform: rotate(-90deg);
   left: -2px;
 }
-.carrousel--buttons img#carrouselNext {
+.carrousel--buttons #carrouselNext img {
   transform: rotate(90deg);
   left: 2px;
 }
@@ -760,6 +760,10 @@ a {
     margin: 0 0 -80px 40px;
   }
 }
+.gallery--wrapper {
+  position: relative;
+}
+
 .gallery--menu {
   height: 100vh;
   width: 80%;
@@ -798,9 +802,9 @@ a {
   border-radius: 100px;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
   background: #fff;
-  position: sticky;
-  top: 48px;
-  left: 0;
+  position: absolute;
+  top: 4px;
+  left: 32px;
   z-index: 5;
   display: flex;
   align-items: center;
@@ -814,8 +818,8 @@ a {
 }
 .gallery--filter.merged {
   position: fixed;
-  top: 48px;
-  left: 20px;
+  top: 42px;
+  left: 32px;
   border: none;
   background: transparent;
   box-shadow: none;
@@ -827,10 +831,45 @@ a {
   padding-bottom: 20px;
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  justify-items: center;
   gap: 20px;
+  justify-items: center;
+  align-items: center;
 }
 
+@media (min-width: 679px) {
+  .gallery--content--grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 976px) {
+  .gallery--wrapper {
+    display: flex;
+    width: 100%;
+  }
+  .gallery--content {
+    flex-grow: 1;
+    padding-left: 40px;
+  }
+  .gallery--filter {
+    display: none;
+  }
+  .gallery--menu {
+    min-height: calc(100vh - 50px);
+    width: 300px;
+    position: sticky;
+    top: 50px;
+    left: 0;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    border: 2px outset rgb(4, 47, 46);
+    z-index: 4;
+  }
+}
+@media (min-width: 1280px) {
+  .gallery--content--grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+}
 .footer--container {
   position: relative;
   background: #042F2E;

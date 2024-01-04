@@ -1,11 +1,9 @@
 import Carrousel from "./classes/Carrousel.js";
 import Shop from "./classes/Shop.js";
 
-// TODO (all) - checkpage before create classes
 // (apropos) - check title height and change position and margin of content
-// (index) - true shop - limit fav shop size
 // (index / shop) - hover on card with mobile
-// (index) - prevent multi click - timer - interaction timer && click -- click on button not only image
+// (boutique) - animation sttingsfor different widths - clean code
 
 function initApp() {
 	// all pages //
@@ -60,30 +58,50 @@ function handleMenuFilters() {
 	// handle icon and header merging animation //
 	window.addEventListener("scroll", () => {
 		if (window.scrollY > 230 && ![...filterIcon.classList].includes("merged")) {
+			if (inAnimation) return;
+			inAnimation = true;
+
 			filterIcon.classList.toggle("merged");
-			filterIcon.animate([{ top: "48px" }, { top: 0 }], {
-				duration: 400,
-				easeing: "ease-in-out",
-				fill: "forwards",
-			});
+			const animation = filterIcon.animate(
+				[
+					{ top: "42px", left: "32px" },
+					{ top: 0, left: "20px" },
+				],
+				{
+					duration: 400,
+					easeing: "ease-in-out",
+					fill: "forwards",
+				}
+			);
 			filterIcon.querySelector("img").src = "./public/images/filtre_white.png";
 			logo.style.opacity = 0;
+
+			animation.addEventListener("finish", () => {
+				inAnimation = false;
+			});
 		}
 
 		if (window.scrollY < 220 && [...filterIcon.classList].includes("merged")) {
 			if (inAnimation) return;
 			inAnimation = true;
 
-			const animation = filterIcon.animate([{ top: 0 }, { top: "48px" }], {
-				duration: 400,
-				easeing: "ease-in-out",
-				fill: "forwards",
-			});
+			const animation = filterIcon.animate(
+				[
+					{ top: 0, left: "20px" },
+					{ top: "42px", left: "32px" },
+				],
+				{
+					duration: 400,
+					easeing: "ease-in-out",
+					fill: "forwards",
+				}
+			);
 
 			animation.addEventListener("finish", () => {
 				filterIcon.classList.toggle("merged");
 				filterIcon.querySelector("img").src = "./public/images/filtre.png";
 				inAnimation = false;
+				animation.cancel();
 			});
 			logo.style.opacity = 1;
 		}
@@ -100,6 +118,7 @@ function handleBodyMenuFilter() {
 	const filter = document.querySelector("#bodyMenuFilter");
 	const opacity = getComputedStyle(filter).opacity;
 	filter.style.opacity = +opacity === 0 ? 1 : 0;
+	filter.style.zIndex = +opacity === 0 ? 4 : -1;
 }
 
 function handleCarrousel() {
@@ -156,6 +175,41 @@ const shopData = [
 		title: "titre 3",
 		description: "description 3",
 		image: "./public/images/mouton_portrait.jpg",
+		fav: true,
+	},
+	{
+		id: 4,
+		title: "titre 4",
+		description: "description 4",
+		image: "./public/images/sheep_3.jpg",
+		fav: true,
+	},
+	{
+		id: 4,
+		title: "titre 4",
+		description: "description 4",
+		image: "./public/images/sheep_3.jpg",
+		fav: true,
+	},
+	{
+		id: 4,
+		title: "titre 4",
+		description: "description 4",
+		image: "./public/images/sheep_3.jpg",
+		fav: true,
+	},
+	{
+		id: 4,
+		title: "titre 4",
+		description: "description 4",
+		image: "./public/images/sheep_3.jpg",
+		fav: true,
+	},
+	{
+		id: 4,
+		title: "titre 4",
+		description: "description 4",
+		image: "./public/images/sheep_3.jpg",
 		fav: true,
 	},
 	{

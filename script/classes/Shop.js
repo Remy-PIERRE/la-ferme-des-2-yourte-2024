@@ -4,6 +4,7 @@ export default class Shop {
 	node;
 	page;
 	articles = [];
+	articleDiplayed = 0;
 
 	constructor(datas) {
 		if (document.querySelector("#shopGridFav")) {
@@ -29,6 +30,9 @@ export default class Shop {
 	}
 
 	setArticle(article) {
-		this.node.appendChild(article.getNode());
+		if (this.articleDiplayed < 8) {
+			this.node.appendChild(article.getNode());
+			this.articleDiplayed++;
+		}
 	}
 }
